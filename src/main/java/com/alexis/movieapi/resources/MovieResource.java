@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.alexis.movieapi.domain.Interval;
 import com.alexis.movieapi.domain.Movie;
 import com.alexis.movieapi.services.MovieService;
 
@@ -34,6 +35,12 @@ public class MovieResource {
 	@GetMapping
 	public ResponseEntity<List<Movie>> findAll() {
 		List<Movie> list = service.findAll();
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@GetMapping(value = "/min-max-interval")
+	public ResponseEntity<Interval> findMinMaxInterval() {
+		Interval list = service.findMinMaxInterval();
 		return ResponseEntity.ok().body(list);
 	}
 
