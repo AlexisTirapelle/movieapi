@@ -2,7 +2,7 @@
 
 > * API REST desenvolvida em Java com Spring Boot e JPA
 > * Utilizado o banco de dados embarcado H2
-> * Carrega os dados informados no arquivo movielist.csv
+> * Carga inicial: arquivo movielist.csv
 
 ## 💻 Pré-requisitos
 * JDK, de preferência as mais recentes (https://www.oracle.com/java/technologies/downloads/)
