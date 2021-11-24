@@ -81,8 +81,7 @@ public class MovieService {
 			}
 		}
 
-		// ordena lista (alfabeticamente) de produtores pelo nome setado dentro do
-		// objeto
+		// ordena lista (alfabeticamente) de produtores
 		if (producers.size() > 0) {
 			Collections.sort(producers, new Comparator<Producer>() {
 				@Override
@@ -100,15 +99,16 @@ public class MovieService {
 		 */
 		for (int i = 1; i < producers.size(); i++) {
 			if (producers.get(i).getName().equals(producers.get(i - 1).getName())) {
-				if (Integer.parseInt(producers.get(i).getPreviousWin()) > Integer
-						.parseInt(producers.get(i - 1).getPreviousWin())) {
+				if (Integer.parseInt(producers.get(i).getPreviousWin()) > Integer.parseInt(producers.get(i - 1).getPreviousWin())) {
 					producers.get(i).setPreviousWin(producers.get(i - 1).getPreviousWin());
 				}
-				if (Integer.parseInt(producers.get(i).getFollowingWin()) < Integer
-						.parseInt(producers.get(i - 1).getFollowingWin())) {
+				if (Integer.parseInt(producers.get(i).getFollowingWin()) < Integer.parseInt(producers.get(i - 1).getFollowingWin())) {
 					producers.get(i).setFollowingWin(producers.get(i - 1).getFollowingWin());
 				}
 				producers.remove(producers.get(i - 1));
+				// como há a remoção de um objeto da lista, é necessário decrementar o índice em
+				// 1 pra que o loop funcione corretamente
+				i -= i;
 			}
 		}
 
@@ -125,9 +125,9 @@ public class MovieService {
 			}
 		}
 
+		// identifica o maior e menor intervalo
 		int maior = producersWithInterval.get(0).getInterval();
 		int menor = producersWithInterval.get(0).getInterval();
-
 		for (Producer p : producersWithInterval) {
 			if (p.getInterval() < menor)
 				menor = p.getInterval();
@@ -135,18 +135,18 @@ public class MovieService {
 				maior = p.getInterval();
 		}
 
+		// gera listas com os Produtores com maior e menor intervalo
 		for (Producer p : producersWithInterval) {
-			if (p.getInterval() == menor) {
+			if (p.getInterval() == menor) 
 				minList.add(p);
-			}
-			else if (p.getInterval() == maior) {
+			if (p.getInterval() == maior) 
 				maxList.add(p);
-			}
 		}
-		
+
+		// Preenche o objeto final com as listas de Maior e Menor para retorno da API
 		interval.setMin(minList);
 		interval.setMax(maxList);
-		
+
 		return interval;
 	}
 }
