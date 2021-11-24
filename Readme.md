@@ -5,7 +5,7 @@
 > * Carga inicial: arquivo movielist.csv
 
 ## 💻 Pré-requisitos
-* JDK, de preferência as mais recentes (https://www.oracle.com/java/technologies/downloads/)
+* JDK 11+ (https://www.oracle.com/java/technologies/downloads/)
 * IDE para execução de código Java, exemplos: Eclipse, NetBeans, etc. (https://www.eclipse.org/downloads/)
 * Sistema para realizar as requisições, o mais comum é o Postman (https://www.postman.com/)
 
