@@ -70,6 +70,7 @@ public class MovieService {
 		}
 
 		// gera uma lista com os produtores isolados
+		//TODO adicionar Trim()
 		for (Movie w : winners) {
 			String[] nomes = w.getProducers().split(", and |, | and ");
 			for (String n : nomes) {
@@ -81,7 +82,7 @@ public class MovieService {
 			}
 		}
 
-		// ordena lista (alfabeticamente) de produtores
+		// ordena lista (alfabeticamente) de produtores por nome
 		if (producers.size() > 0) {
 			Collections.sort(producers, new Comparator<Producer>() {
 				@Override
@@ -147,6 +148,7 @@ public class MovieService {
 		interval.setMin(minList);
 		interval.setMax(maxList);
 
+		//TODO retornar vazio caso csv vazio
 		return interval;
 	}
 }

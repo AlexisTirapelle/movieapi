@@ -37,6 +37,7 @@ public class MovieapiApplication implements CommandLineRunner {
 //
 //		movieRepository.saveAll(Arrays.asList(m, m2));
 
+		// TODO criar classe de arquivos CSV 
 		Reader reader;
 		try {
 			reader = Files.newBufferedReader(Paths.get("movielist.csv"));
