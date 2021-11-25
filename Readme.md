@@ -1,7 +1,8 @@
 # MOVIE-API
 
 > * API REST desenvolvida em Java com Spring Boot e JPA.
-> * Utilizado o banco de dados embarcado H2 e JUnit para teste de integração.
+> * Utilizado o banco de dados embarcado H2
+> * JUnit para teste de integração.
 > * Carga inicial padrão: arquivo movielist.csv.
 
 ## 💻 Pré-requisitos
