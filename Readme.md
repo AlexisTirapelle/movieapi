@@ -32,7 +32,7 @@
 ## - Teste de Integração
 
 * Executar como *JUnit Test* a classe *MovieResourceTest* alterando no *RunConfiguration* o 
-   Test runner* para **JUnit 4**
+   *Test runner* para **JUnit4**
 * Para executar com diferentes entradas será necessário:
     * Salvar o arquivo dentro da pasta raiz do projeto.
     * Alterar na classe *MovieapiApplication* dentro do método *persistirCSV* o nome do arquivo que será carregado.
