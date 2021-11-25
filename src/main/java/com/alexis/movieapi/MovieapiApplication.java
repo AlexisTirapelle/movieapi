@@ -31,23 +31,16 @@ public class MovieapiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		persistirCSV();
+	}
 
-//		Movie m = new Movie(null, "year", "title", "studios", "producers", "winner");
-//		Movie m2 = new Movie(null, "year2", "title2", "studios2", "producers2", "winner2");
-//
-//		movieRepository.saveAll(Arrays.asList(m, m2));
-
-		// TODO criar classe de arquivos CSV 
+	public void persistirCSV() {
 		Reader reader;
 		try {
 			reader = Files.newBufferedReader(Paths.get("movielist.csv"));
-
 			CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
-
 			CSVReader csvReader = new CSVReaderBuilder(reader).withCSVParser(parser).withSkipLines(1).build();
-
 			List<String[]> csv_movies = csvReader.readAll();
-
 			Movie movie;
 
 			for (String[] row : csv_movies) {
@@ -58,7 +51,6 @@ public class MovieapiApplication implements CommandLineRunner {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }
