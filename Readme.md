@@ -28,3 +28,7 @@
     * Cria um novo filme.
 * ##### (DEL) localhost:8080/movies/{id}
     * Exclui um filme por Id.
+
+## Testes de Integração
+
+Em contrução...
