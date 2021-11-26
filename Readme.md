@@ -12,28 +12,30 @@
 
 ## 🚀 Execução
 * Na IDE, importar o projeto como Maven.
+* IMPORTANTE: alterar o caminho do *spring.datasource.url* especificado no arquivo *application.properties* para o diretório do usuário da sua máquina.
+   * Exemplo: *spring.datasource.url=jdbc:h2:file:/C:/<user>/dbh2movieapi*
 * Executá-lo como Java Application (na classe main *MovieapiApplication*) ou Spring Boot App como projeto.
 
 > Após o servidor iniciar é possível realizar as requições.
 
 ### 📝 End-points disponíveis
-* ##### (GET) localhost:8080/movies
+* (GET) localhost:8080/movies
     * Retorna todos os filmes.
-* ##### (GET) localhost:8080/movies/min-max-interval
+* (GET) localhost:8080/movies/min-max-interval
     * Retorna os produtores com maior e menor intervalo entre seus prêmios.
-* ##### (GET) localhost:8080/movies/{id}
+* (GET) localhost:8080/movies/{id}
     * Retorna um filme específico por Id.
-* ##### (PUT) localhost:8080/movies/{id}
+* (PUT) localhost:8080/movies/{id}
     * Atualiza os dados de um filme por Id.
-* ##### (POST) localhost:8080/movies
+* (POST) localhost:8080/movies
     * Cria um novo filme.
-* ##### (DEL) localhost:8080/movies/{id}
+* (DEL) localhost:8080/movies/{id}
     * Exclui um filme por Id.
 
 ## - Teste de Integração
 
-* Executar como *JUnit Test* a classe *MovieResourceTest* alterando no *RunConfiguration* o 
-   *Test runner* para **JUnit4**
+* Executar como *JUnit Test* a classe *MovieResourceTest*.
+   * Caso não seja executado o teste, por favor alterar no *RunConfiguration* da classe o *Test runner* para **JUnit 4**.
 * Para executar com diferentes entradas será necessário:
     * Salvar o arquivo dentro da pasta raiz do projeto.
     * Alterar na classe *MovieapiApplication* dentro do método *persistirCSV* o nome do arquivo que será carregado.
