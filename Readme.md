@@ -12,7 +12,7 @@
 
 ## 🚀 Execução
 * Na IDE, importar o projeto como Maven.
-* Executá-lo como Java Application (na classe main) ou Spring Boot App como projeto.
+* Executá-lo como Java Application (na classe main *MovieapiApplication*) ou Spring Boot App como projeto.
 
 > Após o servidor iniciar é possível realizar as requições.
 
