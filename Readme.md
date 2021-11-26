@@ -13,7 +13,7 @@
 ## 🚀 Execução
 * Na IDE, importar o projeto como Maven.
 * IMPORTANTE: alterar o caminho do *spring.datasource.url* especificado no arquivo *application.properties* para o diretório do usuário da sua máquina.
-   * Exemplo: *spring.datasource.url=jdbc:h2:file:/C:/<user>/dbh2movieapi*
+   * Exemplo: *spring.datasource.url=jdbc:h2:file:/C:/usuario/dbh2movieapi*
 * Executá-lo como Java Application (na classe main *MovieapiApplication*) ou Spring Boot App como projeto.
 
 > Após o servidor iniciar é possível realizar as requições.
