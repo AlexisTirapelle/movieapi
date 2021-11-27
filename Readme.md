@@ -14,8 +14,9 @@
 ## 🚀 Execução
 * Na IDE, importar o projeto como Maven.
 * IMPORTANTE: alterar o caminho do *spring.datasource.url* especificado no arquivo *application.properties* para o diretório do usuário da sua máquina.
-   * Exemplo: *spring.datasource.url=jdbc:h2:file:C:/Users/Renato/dbh2movieapi*
-* Executá-lo como Java Application (na classe main *MovieapiApplication*) ou Spring Boot App como projeto.
+   * Exemplo no Windows: *spring.datasource.url=jdbc:h2:file:C:/Users/Usuario/dbh2movieapi*
+   * Exemplo no Linux: *spring.datasource.url=jdbc:h2:file:/home/usuario/dbh2movieapi*
+* Executar o projeto como Java Application (na classe main *MovieapiApplication*) ou na pasta raiz como Spring Boot App.
 
 > Após o servidor iniciar é possível realizar as requições.
 
@@ -34,7 +35,7 @@
     * Exclui um filme por Id.
 
 ## - Teste de Integração
-> IPORTANTE: o servidore deve estar rodando para que possa ser executado o teste de integração.
+> IPORTANTE: o servidor deve estar rodando para que possa ser executado o teste de integração.
 * Executar como *JUnit Test* a classe *MovieResourceTest*.
    * Caso não seja executado o teste, por favor alterar no *RunConfiguration* da classe o *Test runner* para **JUnit 4**.
 * Para executar com diferentes entradas será necessário:
