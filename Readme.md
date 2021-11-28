@@ -21,17 +21,17 @@
 > Após o servidor iniciar é possível realizar as requições.
 
 ### 📝 End-points disponíveis
-* **(GET) localhost:8080/movies**
+* **(GET) http://localhost:8080/movies**
     * Retorna todos os filmes.
-* **(GET) localhost:8080/movies/min-max-interval**
+* **(GET) http://localhost:8080/movies/min-max-interval**
     * Retorna os produtores com maior e menor intervalo entre seus prêmios.
-* **(GET) localhost:8080/movies/{id}**
+* **(GET) http://localhost:8080/movies/{id}**
     * Retorna um filme específico por Id.
-* **(PUT) localhost:8080/movies/{id}**
+* **(PUT) http://localhost:8080/movies/{id}**
     * Atualiza os dados de um filme por Id.
-* **(POST) localhost:8080/movies**
+* **(POST) http://localhost:8080/movies**
     * Cria um novo filme.
-* **(DEL) localhost:8080/movies/{id}**
+* **(DEL) http://localhost:8080/movies/{id}**
     * Exclui um filme por Id.
 
 ## - Teste de Integração
