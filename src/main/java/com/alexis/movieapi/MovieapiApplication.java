@@ -44,7 +44,7 @@ public class MovieapiApplication implements CommandLineRunner {
 			Movie movie;
 
 			for (String[] row : csv_movies) {
-				movie = new Movie(null, row[0], row[1], row[2], row[3], row[4]);
+				movie = new Movie(null, Integer.parseInt(row[0]), row[1], row[2], row[3], row[4]);
 				movieRepository.saveAll(Arrays.asList(movie));
 			}
 

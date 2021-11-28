@@ -15,7 +15,7 @@ public class Movie implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String year;
+	private int year;
 	private String title;
 	private String studios;
 	private String producers;
@@ -25,7 +25,7 @@ public class Movie implements Serializable {
 		super();
 	}
 
-	public Movie(Integer id, String year, String title, String studios, String producers, String winner) {
+	public Movie(Integer id, int year, String title, String studios, String producers, String winner) {
 		super();
 		this.id = id;
 		this.year = year;
@@ -43,11 +43,11 @@ public class Movie implements Serializable {
 		this.id = id;
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 

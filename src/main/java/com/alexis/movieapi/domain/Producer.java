@@ -4,8 +4,8 @@ public class Producer {
 
 	private String name;
 	private int interval;
-	private String previousWin;
-	private String followingWin;
+	private int previousWin;
+	private int followingWin;
 	
 	public String getName() {
 		return name;
@@ -19,16 +19,16 @@ public class Producer {
 	public void setInterval(int interval) {
 		this.interval = interval;
 	}
-	public String getPreviousWin() {
+	public int getPreviousWin() {
 		return previousWin;
 	}
-	public void setPreviousWin(String previousWin) {
+	public void setPreviousWin(int previousWin) {
 		this.previousWin = previousWin;
 	}
-	public String getFollowingWin() {
+	public int getFollowingWin() {
 		return followingWin;
 	}
-	public void setFollowingWin(String followingWin) {
+	public void setFollowingWin(int followingWin) {
 		this.followingWin = followingWin;
 	}
 	

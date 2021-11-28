@@ -59,15 +59,15 @@ public class MovieService {
 		List<Producer> minList = new ArrayList<Producer>();
 		List<Producer> maxList = new ArrayList<Producer>();
 		Interval interval = new Interval();
-		
-		if(movies.size() > 0) {
+
+		if (movies.size() > 0) {
 			// gera uma lista apenas com os ganhadores
 			for (Movie m : movies) {
 				if (m.getWinner().equals("yes")) {
 					winners.add(m);
 				}
 			}
-	
+
 			// gera uma lista com os produtores isolados
 			for (Movie w : winners) {
 				String[] nomes = w.getProducers().split(", and |, | and ");
@@ -79,7 +79,7 @@ public class MovieService {
 					producers.add(producer);
 				}
 			}
-	
+
 			// ordena lista (alfabeticamente) de produtores por nome
 			if (producers.size() > 0) {
 				Collections.sort(producers, new Comparator<Producer>() {
@@ -89,7 +89,7 @@ public class MovieService {
 					}
 				});
 			}
-	
+
 			/*
 			 * Valida se o objeto anterior tem o mesmo nome e atualiza os campos previousWin
 			 * e followingWin de acordo com o maior e o menor entre os objetos de mesmo nome
@@ -98,32 +98,32 @@ public class MovieService {
 			 */
 			for (int i = 1; i < producers.size(); i++) {
 				if (producers.get(i).getName().equals(producers.get(i - 1).getName())) {
-					if (Integer.parseInt(producers.get(i).getPreviousWin()) > Integer.parseInt(producers.get(i - 1).getPreviousWin())) {
+					if (producers.get(i).getPreviousWin() > producers.get(i - 1).getPreviousWin()) {
 						producers.get(i).setPreviousWin(producers.get(i - 1).getPreviousWin());
 					}
-					if (Integer.parseInt(producers.get(i).getFollowingWin()) < Integer.parseInt(producers.get(i - 1).getFollowingWin())) {
+					if (producers.get(i).getFollowingWin() < producers.get(i - 1).getFollowingWin()) {
 						producers.get(i).setFollowingWin(producers.get(i - 1).getFollowingWin());
 					}
 					producers.remove(producers.get(i - 1));
 					// como há a remoção de um objeto da lista, é necessário decrementar o índice em
 					// 1 pra que o loop funcione corretamente
-					i -= i;
+					i--;
 				}
 			}
-	
+
 			// calcula e seta o intervalo
 			for (Producer p : producers) {
-				int intervalo = Integer.parseInt(p.getFollowingWin()) - Integer.parseInt(p.getPreviousWin());
+				int intervalo = p.getFollowingWin() - p.getPreviousWin();
 				p.setInterval(intervalo);
 			}
-	
+
 			// gera nova lista apenas com os objetos que contêm intervalo
 			for (Producer p : producers) {
 				if (p.getInterval() != 0) {
 					producersWithInterval.add(p);
 				}
 			}
-	
+
 			// identifica o maior e menor intervalo
 			int maior = producersWithInterval.get(0).getInterval();
 			int menor = producersWithInterval.get(0).getInterval();
@@ -133,15 +133,15 @@ public class MovieService {
 				if (p.getInterval() > maior)
 					maior = p.getInterval();
 			}
-	
+
 			// gera listas com os Produtores com maior e menor intervalo
 			for (Producer p : producersWithInterval) {
-				if (p.getInterval() == menor) 
+				if (p.getInterval() == menor)
 					minList.add(p);
-				if (p.getInterval() == maior) 
+				if (p.getInterval() == maior)
 					maxList.add(p);
 			}
-	
+
 			// Preenche o objeto final com as listas de Maior e Menor para retorno da API
 			interval.setMin(minList);
 			interval.setMax(maxList);
