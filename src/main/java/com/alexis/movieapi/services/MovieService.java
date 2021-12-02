@@ -30,7 +30,7 @@ public class MovieService {
 
 	public List<Movie> findAll() {
 		return repository.findAll(Sort.by(Sort.Direction.ASC, "year"));
-		
+
 	}
 
 	public Movie update(Integer id, Movie obj) {
@@ -59,7 +59,6 @@ public class MovieService {
 		List<Producer> producers = new ArrayList<Producer>();
 		List<Producer> producers2 = new ArrayList<Producer>();
 
-		List<Producer> producersWithInterval = new ArrayList<Producer>();
 		List<Producer> minList = new ArrayList<Producer>();
 		List<Producer> maxList = new ArrayList<Producer>();
 		Interval interval = new Interval();
