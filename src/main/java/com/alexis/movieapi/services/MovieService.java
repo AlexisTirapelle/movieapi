@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.alexis.movieapi.domain.Interval;
@@ -28,7 +29,8 @@ public class MovieService {
 	}
 
 	public List<Movie> findAll() {
-		return repository.findAll();
+		return repository.findAll(Sort.by(Sort.Direction.ASC, "year"));
+		
 	}
 
 	public Movie update(Integer id, Movie obj) {
