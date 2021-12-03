@@ -55,22 +55,29 @@ public class MovieService {
 
 	public Interval findMinMaxInterval() {
 		List<Movie> movies = findAll();
+		Interval interval = new Interval();
+		if (movies.size() > 0) {
+			interval = executeMinMaxInterval(movies);
+		} else {
+			interval = null;
+		}
+		return interval;
+	}
+
+	public Interval executeMinMaxInterval(List<Movie> movies) {
 		List<Movie> winners = new ArrayList<Movie>();
 		List<Producer> producers = new ArrayList<Producer>();
-		List<Producer> producers2 = new ArrayList<Producer>();
-
-		List<Producer> minList = new ArrayList<Producer>();
-		List<Producer> maxList = new ArrayList<Producer>();
+		List<Producer> produtoresComNomeRepetido = new ArrayList<Producer>();
 		Interval interval = new Interval();
 
-		if (movies.size() > 0) {
-			// gera uma lista apenas com os ganhadores
-			for (Movie m : movies) {
-				if (m.getWinner().equals("yes")) {
-					winners.add(m);
-				}
+		// gera uma lista apenas com os ganhadores
+		for (Movie m : movies) {
+			if (m.getWinner().equals("yes")) {
+				winners.add(m);
 			}
+		}
 
+		if (winners.size() > 0) {
 			// gera uma lista com os produtores isolados
 			for (Movie w : winners) {
 				String[] nomes = w.getProducers().split(", and |, | and ");
@@ -82,7 +89,7 @@ public class MovieService {
 					producers.add(producer);
 				}
 			}
-
+	
 			// ordena lista (alfabeticamente) de produtores por nome
 			if (producers.size() > 0) {
 				Collections.sort(producers, new Comparator<Producer>() {
@@ -92,48 +99,61 @@ public class MovieService {
 					}
 				});
 			}
-
+	
 			for (int i = 1; i < producers.size(); i++) {
 				if (producers.get(i).getName().equals(producers.get(i - 1).getName())) {
-					Producer producer2 = new Producer();
+					Producer produtor = new Producer();
 					if (producers.get(i).getPreviousWin() > producers.get(i - 1).getPreviousWin()) {
-						producer2.setFollowingWin(producers.get(i).getPreviousWin());
-						producer2.setPreviousWin(producers.get(i - 1).getPreviousWin());
+						produtor.setFollowingWin(producers.get(i).getPreviousWin());
+						produtor.setPreviousWin(producers.get(i - 1).getPreviousWin());
 					} else {
-						producer2.setFollowingWin(producers.get(i - 1).getPreviousWin());
-						producer2.setPreviousWin(producers.get(i).getPreviousWin());
+						produtor.setFollowingWin(producers.get(i - 1).getPreviousWin());
+						produtor.setPreviousWin(producers.get(i).getPreviousWin());
 					}
-					producer2.setName(producers.get(i).getName());
-					producer2.setInterval(producer2.getFollowingWin() - producer2.getPreviousWin());
-					producers2.add(producer2);
+					produtor.setName(producers.get(i).getName());
+					produtor.setInterval(produtor.getFollowingWin() - produtor.getPreviousWin());
+					produtoresComNomeRepetido.add(produtor);
 				}
 			}
-
-			// identifica o maior e menor intervalo
-			int maior = producers2.get(0).getInterval();
-			int menor = producers2.get(0).getInterval();
-			for (Producer p : producers2) {
-				if (p.getInterval() < menor)
-					menor = p.getInterval();
-				if (p.getInterval() > maior)
-					maior = p.getInterval();
+	
+			if (produtoresComNomeRepetido.size() > 0) {
+				interval = getIntervalo(produtoresComNomeRepetido);
+			} else {
+				interval = getIntervalo(producers);
 			}
-
-			// gera listas com os Produtores com maior e menor intervalo
-			for (Producer p : producers2) {
-				if (p.getInterval() == menor)
-					minList.add(p);
-				if (p.getInterval() == maior)
-					maxList.add(p);
-			}
-
-			// Preenche o objeto final com as listas de Maior e Menor para retorno da API
-			interval.setMin(minList);
-			interval.setMax(maxList);
 		} else {
 			interval = null;
 		}
+		return interval;
+	}
 
+	public Interval getIntervalo(List<Producer> producers2) {
+		List<Producer> minList = new ArrayList<Producer>();
+		List<Producer> maxList = new ArrayList<Producer>();
+		Interval interval = new Interval();
+		
+		// identifica o maior e menor intervalo
+		int maior = producers2.get(0).getInterval();
+		int menor = producers2.get(0).getInterval();
+		for (Producer p : producers2) {
+			if (p.getInterval() < menor)
+				menor = p.getInterval();
+			if (p.getInterval() > maior)
+				maior = p.getInterval();
+		}
+
+		// gera listas com os Produtores com maior e menor intervalo
+		for (Producer p : producers2) {
+			if (p.getInterval() == menor)
+				minList.add(p);
+			if (p.getInterval() == maior)
+				maxList.add(p);
+		}
+
+		// Preenche o objeto final com as listas de Maior e Menor para retorno da API
+		interval.setMin(minList);
+		interval.setMax(maxList);
+		
 		return interval;
 	}
 }
